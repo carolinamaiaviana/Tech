@@ -1,0 +1,727 @@
+<html>
+  <head>
+    <title>Tech</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            }
+          }
+        }
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("a").on('click', function(event) {
+
+        if (this.hash !== "") {
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+      
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button id="menuButton" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open main menu</span>
+              <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-shrink-0 items-center">
+              <i class="fa-brands fa-drupal h-8 w-auto text-sky-400/100 text-2xl"></i>
+              <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"> -->
+            </div>
+            <div id="menuColapse" class="sm:ml-6 sm:block hidden">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#sectionTwo" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Our Values</a>
+                <a href="#sectionThree" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tech Journey</a>
+                <a href="#sectionFour" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Trends</a>
+                <a href="#sectionFive" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Operatings</a>
+                <a href="#sectionSix" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Pricing</a>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="absolute -inset-1.5"></span>
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
+    
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+              <div>
+                <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </button>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="sm:hidden hidden" id="menuColapseDown">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="sectionOne" class="bg-gray-800 flex py-20">
+      <div class="container mx-auto grid grid-cols-1  lg:grid-cols-2">
+        <div class="flex-col justify-center items-center lg:m-12">
+          <div class="px-20">
+
+            <div class="flex flex-col flex-wrap">
+            <h1 class="flex text-white text-5xl sm:text-7xl font-extrabold items-center justify-center" style="font-family: 'Times New Roman', Times, serif;">
+              Craft captivating  <br> tech-related experiences
+            </h1>
+            <h2 class="flex text-white text-xl font-semibold items-center justify-center">Transforming tech concepts into captivating experiences is our expertise. At Tech Ana Deodato, we thrive on innovation and creativity, ensuring every project we undertake reflects our commitment to excellence and cutting-edge technology</h2>
+            </div>
+  
+                   
+            <div class="flex mt-2 lg:m-5 items-center justify-start">
+              <button class="bg-sky-400/100 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+              Request Demo
+              </button>
+              <button class="bg-sky-400/100 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+              Explore Product
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden lg:block m-11 ">
+          <img class="rounded-md" style="width:600px;" src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div id="sectionTwo" class="container m-auto">
+      <div id="Cards" class="grid grid-cols-1 sm:grid-cols-3 py-28 sm:gap-9 mx-4 sm:mx-32">
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-rocket text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Innovation</h1>
+            <h2 class="text-xl font-light">Pioneering groundbreaking solutions that redefine industry standards. Innovation is our driving force, propelling us towards the future.</h2>
+
+          </div>
+        </div>
+
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-briefcase text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Integrity</h1>
+            <h2 class="text-xl font-light">Upholding honesty and transparency in all our interactions and endeavors. We believe integrity is the foundation of trust</h2>
+
+          </div>
+        </div>
+
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-handshake-simple text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Collaboration</h1>
+            <h2 class="text-xl font-light">Fostering teamwork and partnerships to achieve shared goals. Together, we can accomplish more than we ever could alone.</h2>
+
+          </div>
+
+        </div>
+
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-trophy text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Excellence</h1>
+            <h2 class="text-xl font-light">Striving for excellence in every aspect of our work, setting the bar high. Excellence is not just a goal; it's our standard.</h2>
+
+          </div>
+
+        </div>
+
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-globe text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Inclusivity</h1>
+            <h2 class="text-xl font-light">Celebrating diversity and promoting inclusivity in all our endeavors. Inclusivity enriches our perspectives and strengthens our bonds.</h2>
+
+          </div>
+
+        </div>
+
+        <div id="singleCard" class="p-2 ">
+
+          <div id="cardIcon" class="bg-sky-400/100 w-20 h-20 rounded-full flex justify-center items-center">
+            <i class="fa-solid fa-seedling text-white text-4xl "></i>
+          </div>
+  
+          <div id="cardText" class="mt-2">
+            <h1 class="flex text-black text-4xl font-bold" style="font-family: 'Times New Roman', Times, serif;">Sustainability</h1>
+            <h2 class="text-xl font-light">Championing eco-friendly practices and sustainable solutions for a better future. Our commitment to sustainability extends beyond business.</h2>
+
+          </div>
+
+        </div>
+    
+      </div>
+    </div>
+
+    <div id="sectionThree" class="bg-gray-200 flex flex-col justify-center items-center pt-10">
+      
+        <div id="textosThree">
+          <h1 class="flex text-black text-5xl sm:text-6xl font-extrabold items-center justify-center p-2" style="font-family: 'Times New Roman', Times, serif;">
+            Our Tech Journey
+          </h1>
+          <h2 class="flex text-black text-2xl font-light items-center justify-center p-6">Embark on a journey through our tech achievements and values. Discover how we've shaped <br> the digital landscape with innovation and integrity every step of the way.</h2>
+        </div>
+        
+        <div id="IconsThree" class="flex flex-wrap justify-center items-center">
+          <div id="singleIconThree" class="flex flex-col justify-center items-center m-2 cursor-pointer">
+            <div id="symbolImage1" class="bg-white w-20 h-20 mb-2 shadow-md rounded-full flex justify-center items-center">
+              <i class="fa-solid fa-chart-simple text-sky-400/100 text-4xl "></i>
+            </div>
+            <h1 class="font-bold text-xl">Tech Innovations</h1>
+          </div>
+
+          <div id="singleIconThree" class="flex flex-col justify-center items-center m-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <div id="symbolImage2" class="bg-white w-20 h-20 mb-2 shadow-md rounded-full flex justify-center items-center">
+              <i class="fa-solid fa-landmark text-sky-400/100 text-4xl "></i>
+            </div>
+            <h1 class="font-bold text-xl">Ethical Values</h1>
+          </div>
+
+          <div id="singleIconThree" class="flex flex-col justify-center items-center m-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <div id="symbolImage3" class="bg-white w-20 h-20 mb-2 shadow-md rounded-full flex justify-center items-center">
+              <i class="fa-solid fa-diamond text-sky-400/100 text-4xl "></i>
+            </div>
+            <h1 class="font-bold text-xl">Team Collaboration</h1>
+          </div>
+
+          <div id="singleIconThree" class="flex flex-col justify-center items-center m-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <div id="symbolImage4" class="bg-white w-20 h-20 mb-2 shadow-md rounded-full flex justify-center items-center">
+              <i class="fa-solid fa-layer-group text-sky-400/100 text-4xl "></i>
+            </div>
+            <h1 class="font-bold text-xl">Empowering Users</h1>
+          </div>
+        </div>
+  
+        <div id="imageThree" class="container size-11/12 sm:size-2/4 m-4 overflow-hidden">
+          <img id="img1" class="animateImage block mt-10 shadow-md" src="https://images.unsplash.com/photo-1616587657189-5127befe3a98?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <img id="img2" class="animateImage hidden mt-10 shadow-md" src="https://images.unsplash.com/photo-1590650467980-8eadfa86ff48?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <img id="img3" class="animateImage hidden mt-10 shadow-md" src="https://images.unsplash.com/photo-1560250084-db7634c63f8a?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <img id="img4" class="animateImage hidden mt-10 shadow-md" src="https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+    
+    </div>
+
+    <div id="sectionFour" class="flex flex-col flex-wrap justify-center items-center">
+      <div id="textFour" class="">
+        <hr class="mt-10 m-auto" style="width: 70%;">
+        <h1 class="mt-10 flex text-black text-5xl sm:text-7xl font-extrabold items-center justify-center p-2" style="font-family: 'Times New Roman', Times, serif;">Discover the Latest Tech News and Updates</h1>
+      </div>
+      
+
+      <div id="imageTextFour" class=" container flex justify-center items-center m-auto grid grid-cols-1  lg:grid-cols-2">
+        <div id="imageFour" class="size-11/12 sm:size-3/4 overflow-hidden flex items-center m-auto rounded-md">
+          <img id="photoFour1" class="shadow-md animateImage2 block mt-10 shadow-md" src="https://images.unsplash.com/photo-1600275668999-f423597ec2a8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <img id="photoFour2" class="animateImage2 hidden mt-10 shadow-md" src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <img id="photoFour3" class="animateImage2 hidden mt-10 shadow-md" src="https://images.unsplash.com/photo-1507206130118-b5907f817163?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+
+        <div id="textButtonsFour" class="flex flex-col m-2 sm:m-20 gap-6 justify-center items-center">
+          <div id="secondTextFour" class="flex flex-col justify-center items-center">
+            <h1 class="flex text-black text-5xl font-extrabold items-center justify-center" style="font-family: 'Times New Roman', Times, serif;">Stay Always Informed</h1>
+
+            <h2 class="flex text-black text-2xl font-extralight items-center justify-center">Explore the latest tech news, trends, and updates to stay ahead of the curve. Our curated selection of articles and insights provides valuable information on emerging technologies, industry developments, and innovation.</h2>
+          </div>
+
+          <div id="buttonsFour" class="flex flex-col gap-2">
+            
+              <div id="singleButton1" class="cursor-pointer w-11/12 sm:w-full flex border-2 border-sky-400/100 rounded-md p-4 shadow-md m-auto">
+                <i class="fa-solid fa-gauge-simple text-sky-400/100 text-xl ml-2"></i>
+                <div id="phrase" class="flex flex-col ml-3">
+                  <h1 class="font-bold text-xl">Industry Insights</h1>
+                  <h2 class="flex text-black text-xl font-extralight items-center justify-center">Gain valuable insights into the tech industry with in-depth analysis on market trends, and emerging technologies.</h2>
+                </div>
+              </div>
+            
+
+            
+              <div id="singleButton2" class="cursor-pointer w-11/12 sm:w-full flex border-2 border-sky-400/100 rounded-md p-4 shadow-md opacity-50 hover:opacity-100 transition-opacity duration-300 m-auto" >
+                <i class="fa-solid fa-arrow-pointer text-sky-400/100 text-xl ml-2"></i>
+                <div id="phrase" class="flex flex-col ml-3">
+                  <h1 class="font-bold text-xl">Product Releases</h1>
+                  <h2 class="flex text-black text-xl font-extralight items-center justify-center">Stay up-to-date with the latest product releases and announcements from leading tech companies. </h2>
+                </div>
+              </div>
+            
+
+            
+              <div id="singleButton3" class="cursor-pointer w-11/12 sm:w-full flex border-2 border-sky-400/100 rounded-md p-4 shadow-md opacity-50 hover:opacity-100 transition-opacity duration-300 m-auto">
+                <i class="fa-solid fa-thumbtack text-sky-400/100 text-xl ml-2"></i>
+                <div id="phrase" class="flex flex-col ml-3">
+                  <h1 class="font-bold text-xl">Tech Events</h1>
+                  <h2 class="flex text-black text-xl font-extralight items-center justify-center">Explore upcoming tech events, conferences, and workshops happening around the globe. </h2>
+                </div>
+              </div>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sectionFive" class="bg-gray-800 p-10 flex flex-col justify-center items-center gap-6">
+      <div id="textFive" class=" sm:size-1/2">
+        <h1 class="mt-10 flex text-white text-5xl lg:text-6xl font-extrabold text-center" style="font-family: 'Times New Roman', Times, serif;">Simplify operating and manage with transparency</h1>
+      </div>
+
+
+      <div id="cardsFive" class="flex flex-wrap sm:flex-row justify-center items-center mt-20">
+
+        <div id="singleCardFive" class="relative flex flex-col items-center size-11/12 sm:size-2/6 lg:size-1/6 flex justify-center items-center m-5 rounded-md">
+          <div id="symbolImage1" class="cursor-default absolute top-0 left-0 -mt-10 ml-4 bg-blue-700 w-16 h-16 lg:w-20 lg:h-20 mb-2 shadow-md rounded-full flex justify-center items-center z-10">
+            <i class="fa-light fa-1 text-white text-4xl "></i>
+          </div>
+
+          <div class="">
+            <div id="imageSingleFive" class="cursor-default overflow-hidden ">
+              <img class="hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1598257006303-031250badbdc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+  
+            <div id="textSingleFive" class="flex flex-col mt-6 justify-center items-center">
+              <h1 class="font-bold text-white text-xl cursor-default hover:underline" style="font-family: 'Times New Roman', Times, serif;">Streamlined Operations</h1>
+              <h2 class="flex text-white text-xl font-extralight">Discover how our streamlined approach to operations can help your business run more efficiently.</h2>
+            </div>
+          </div> 
+        </div>
+
+        <div id="singleCardFive" class="relative flex flex-col items-center size-11/12 sm:size-2/6 lg:size-1/6 flex justify-center items-center m-5 rounded-md">
+          <div id="symbolImage1" class="cursor-default absolute top-0 left-0 -mt-10 ml-4 bg-blue-700 w-16 h-16 lg:w-20 lg:h-20 mb-2 shadow-md rounded-full flex justify-center items-center z-10">
+            <i class="fa-light fa-2 text-white text-4xl "></i>
+          </div>
+
+          <div class="overflow-hidden">
+            <div id="imageSingleFive" class="cursor-default overflow-hidden ">
+              <img class="hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+  
+            <div id="textSingleFive" class="flex flex-col mt-6 justify-center items-center">
+              <h1 class="font-bold text-white text-xl cursor-default hover:underline" style="font-family: 'Times New Roman', Times, serif;">Transparent Communication</h1>
+              <h2 class="flex text-white text-xl font-extralight">We mantain open communication approach fosters trust and collaboration among team members.</h2>
+            </div>
+          </div> 
+        </div>
+
+        <div id="singleCardFive" class="relative flex flex-col items-center size-11/12 sm:size-2/6 lg:size-1/6 flex justify-center items-center m-5 rounded-md">
+          <div id="symbolImage1" class="cursor-default absolute top-0 left-0 -mt-10 ml-4 bg-blue-700 w-16 h-16 lg:w-20 lg:h-20 mb-2 shadow-md rounded-full flex justify-center items-center z-10">
+            <i class="fa-light fa-3 text-white text-4xl "></i>
+          </div>
+
+          <div class="overflow-hidden">
+            <div id="imageSingleFive" class="cursor-default overflow-hidden ">
+              <img class="hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1600275669439-14e40452d20b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+  
+            <div id="textSingleFive" class="flex flex-col mt-6 justify-center items-center">
+              <h1 class="font-bold text-white text-xl cursor-default hover:underline" style="font-family: 'Times New Roman', Times, serif;">Efficient Cost Management</h1>
+              <h2 class="flex text-white text-xl font-extralight">By effectively managing costs, you can improve profitability and sustainability while reducing waste.</h2>
+            </div>
+          </div> 
+        </div>
+
+        <div id="singleCardFive" class="relative flex flex-col items-center size-11/12 sm:size-2/6 lg:size-1/6 flex justify-center items-center m-5 rounded-md">
+          <div id="symbolImage1" class="cursor-default absolute top-0 left-0 -mt-10 ml-4 bg-blue-700 w-16 h-16 lg:w-20 lg:h-20 mb-2 shadow-md rounded-full flex justify-center items-center z-10">
+            <i class="fa-light fa-4 text-white text-4xl "></i>
+          </div>
+
+          <div class="overflow-hidden">
+            <div id="imageSingleFive" class="cursor-default overflow-hidden ">
+              <img class="hover:scale-110 transition-transform duration-500" src="https://images.unsplash.com/photo-1552960394-c81add8de6b8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+  
+            <div id="textSingleFive" class="flex flex-col mt-6 justify-center items-center">
+              <h1 class="font-bold text-white text-xl cursor-default hover:underline" style="font-family: 'Times New Roman', Times, serif;">Data-Driven Decision Making</h1>
+              <h2 class="flex text-white text-xl font-extralight">With access to actionable insights, you can make informed decisions that drive business growth and success.</h2>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div id="sectionSix" class="flex flex-col justify-center items-center gap-6">
+
+      <div id="textSix" class=" sm:size-1/2">
+        <h1 class="mt-10 flex text-dark text-5xl lg:text-6xl font-extrabold text-center" style="font-family: 'Times New Roman', Times, serif;">Find the right plan for your business</h1>
+      </div>
+
+      
+    <label class="inline-flex items-center cursor-pointer">
+      <span class="mr-3 text-lg font-medium text-gray-500 dark:text-gray-500">Pay Monthly
+      </span>
+      <input id="togglePrice" type="checkbox" value="" class="sr-only peer">
+      <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+      <span class="ms-3 text-lg font-medium text-gray-500 dark:text-gray-500">Pay Yearly (-20%)</span>
+    </label>
+
+
+      <div id="cardsSix" class="flex flex-wrap gap-20 mt-10 items-center justify-center">
+        
+      <div class=" max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 hover:scale-110 transition-transform duration-500 mb-10">
+        <h5 class="mb-4 text-xl font-bold text-gray-500 dark:text-gray-400" style="font-family: 'Times New Roman', Times, serif;">Essential</h5>
+        <div class="flex items-baseline text-gray-900 dark:text-white">
+        <span class="text-3xl font-semibold" >$</span>
+        <span id="firstPriceCard" class="text-5xl font-extrabold tracking-tight" style="font-family: 'Times New Roman', Times, serif;">55</span>
+        <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
+        </div>
+        <ul role="list" class="space-y-5 my-7">
+        <li class="flex items-center">
+        <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">2 team members</span>
+        </li>
+        <li class="flex">
+        <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">20GB Cloud storage</span>
+        </li>
+        <li class="flex">
+        <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Integration help</span>
+        </li>
+        <li class="flex line-through decoration-gray-500">
+        <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 ms-3">Sketch Files</span>
+        </li>
+        <li class="flex line-through decoration-gray-500">
+        <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 ms-3">API Access</span>
+        </li>
+        <li class="flex line-through decoration-gray-500">
+        <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 ms-3">Complete documentation</span>
+        </li>
+        <li class="flex line-through decoration-gray-500">
+        <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+        </svg>
+        <span class="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
+        </li>
+        </ul>
+        <button type="button" class="text-white bg-sky-400/100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-sky-400/100 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+        </div>
+
+        <div class=" max-w-sm p-4 bg-gray-800 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 hover:scale-110 transition-transform duration-500 mb-10">
+          <h5 class="mb-4 text-xl font-bold text-gray-500 dark:text-gray-400" style="font-family: 'Times New Roman', Times, serif;">Premium</h5>
+          <div class="flex items-baseline text-gray-900 dark:text-white">
+          <span class="text-3xl font-semibold" >$</span>
+          <span id="secondPriceCard" class="text-5xl font-extrabold tracking-tight" style="font-family: 'Times New Roman', Times, serif;">85</span>
+          <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
+          </div>
+          <ul role="list" class="space-y-5 my-7">
+          <li class="flex items-center">
+          <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">2 team members</span>
+          </li>
+          <li class="flex">
+          <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">20GB Cloud storage</span>
+          </li>
+          <li class="flex">
+          <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Integration help</span>
+          </li>
+          <li class="flex">
+          <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Sketch Files</span>
+          </li>
+          <li class="flex">
+          <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">API Access</span>
+          </li>
+          <li class="flex line-through decoration-gray-500">
+          <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 ms-3">Complete documentation</span>
+          </li>
+          <li class="flex line-through decoration-gray-500">
+          <svg class="flex-shrink-0 w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
+          </li>
+          </ul>
+          <button type="button" class="text-white bg-sky-400/100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-sky-400/100 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+          </div>
+
+          <div class="max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 hover:scale-110 transition-transform duration-500 mb-8">
+            <h5 class="mb-4 text-xl font-bold text-gray-500 dark:text-gray-400" style="font-family: 'Times New Roman', Times, serif;">Advanced</h5>
+            <div class="flex items-baseline text-gray-900 dark:text-white">
+            <span class="text-3xl font-semibold" >$</span>
+            <span id="thirdPriceCard" class="text-5xl font-extrabold tracking-tight" style="font-family: 'Times New Roman', Times, serif;">135</span>
+            <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
+            </div>
+            <ul role="list" class="space-y-5 my-7">
+            <li class="flex items-center">
+            <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">2 team members</span>
+            </li>
+            <li class="flex">
+            <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">20GB Cloud storage</span>
+            </li>
+            <li class="flex">
+            <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Integration help</span>
+            </li>
+            <li class="flex">
+              <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+              </svg>
+              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Sketch Files</span>
+              </li>
+              <li class="flex">
+              <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+              </svg>
+              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">API Access</span>
+              </li>
+            <li class="flex">
+            <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">Complete documentation</span>
+            </li>
+            <li class="flex">
+            <svg class="flex-shrink-0 w-4 h-4 text-sky-400/100 dark:text-sky-400/100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3">24×7 phone & email support</span>
+            </li>
+            </ul>
+            <button type="button" class="text-white bg-sky-400/100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-sky-400/100 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+            </div>
+    
+        
+  
+      </div>
+
+    </div>
+
+    
+
+<footer class="bg-white dark:bg-gray-900">
+  <div class="mx-auto w-full max-w-screen-xl">
+    <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+      <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                  <a href="#" class=" hover:underline">About</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Careers</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Brand Center</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Blog</a>
+              </li>
+          </ul>
+      </div>
+      <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Discord Server</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Twitter</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Facebook</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Contact Us</a>
+              </li>
+          </ul>
+      </div>
+      <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Privacy Policy</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Licensing</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+              </li>
+          </ul>
+      </div>
+      <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">iOS</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Android</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">Windows</a>
+              </li>
+              <li class="mb-4">
+                  <a href="#" class="hover:underline">MacOS</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</div>
+
+  <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700">
+    <div class="container m-auto md:flex md:items-center md:justify-between" >
+
+      <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2024 <a href="https://flowbite.com/">AnaDeodato™</a>. All Rights Reserved.
+      </span>
+      <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                      <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+                  </svg>
+                <span class="sr-only">Facebook page</span>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                      <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
+                  </svg>
+                <span class="sr-only">Discord community</span>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                  <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"/>
+              </svg>
+                <span class="sr-only">Twitter page</span>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+                </svg>
+                <span class="sr-only">GitHub account</span>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"/>
+              </svg>
+                <span class="sr-only">Dribbble account</span>
+            </a>
+      </div>
+    </div>
+    </div>
+
+</footer>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
+    
+     <!-- cada botao com 1 id quando clicar no botao substitui a url da imagem da div pela url de outra foto; -->

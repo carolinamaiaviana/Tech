@@ -1,0 +1,35 @@
+html, body {
+  scroll-behavior: smooth;
+}
+
+@keyframes callUp {
+    from {
+        opacity:0%;
+        transform: translateY(30px);
+    }
+    to {
+        opacity:100%;
+        transform: translateY(0px);
+    }
+  }
+  
+  .animateImage {
+    animation-name: callUp;
+    animation-duration: 1s;
+  }
+
+   @keyframes callUp2 {
+    from {
+        opacity:0%;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity:100%;
+        transform: translateX(0px);
+    }
+  }
+
+  .animateImage2 {
+    animation-name: callUp2;
+    animation-duration: 1s;
+  } 
